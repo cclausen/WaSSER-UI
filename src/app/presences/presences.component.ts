@@ -2,35 +2,34 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatTable} from '@angular/material/table';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {Person, PersonControllerService} from "../../api";
-import {PersonsDataSource} from "./persons-datasource";
+import {PresencesDataSource} from './presences-datasource';
+import {Presence, PresenceControllerService} from "../../api";
 
 @Component({
-  selector: 'app-persons',
-  templateUrl: './persons.component.html',
-  styleUrls: ['./persons.component.css']
+  selector: 'app-presences',
+  templateUrl: './presences.component.html',
+  styleUrls: ['./presences.component.css']
 })
-export class PersonsComponent implements AfterViewInit, OnInit {
+export class PresencesComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<Person>;
-  dataSource: PersonsDataSource;
+  @ViewChild(MatTable) table!: MatTable<Presence>;
+  dataSource: PresencesDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'firstname', 'lastname'];
+  displayedColumns = ['id', 'start', 'end', 'person'];
 
-  constructor(private personApi: PersonControllerService) {
-    this.dataSource = new PersonsDataSource(personApi);
+  constructor(private presenceApi: PresenceControllerService) {
+    this.dataSource = new PresencesDataSource(presenceApi);
   }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
-    // this.dataSource.index();
   }
 
   ngOnInit(): void {
-    this.dataSource.index();
+    this.dataSource.getOpen();
   }
 }

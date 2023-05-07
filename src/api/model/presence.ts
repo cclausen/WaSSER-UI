@@ -14,10 +14,10 @@ import { Place } from './place';
 
 
 export interface Presence { 
-    id?: number;
-    person?: Person;
+    id: number;
+    person: Person;
     place?: Place;
-    start?: string;
+    start: string;
     end?: string;
 }
 

@@ -1,22 +1,22 @@
 import {DataSource} from '@angular/cdk/collections';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
+import {map} from 'rxjs/operators';
 import {merge, Observable, Subject} from 'rxjs';
-import {Person, PersonControllerService} from "../../api";
-import {map} from "rxjs/operators";
+import {Presence, PresenceControllerService} from "../../api";
 
 /**
- * Data source for the Persons view. This class should
+ * Data source for the Presences view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class PersonsDataSource extends DataSource<Person> {
-  data: Person[] = [];
+export class PresencesDataSource extends DataSource<Presence> {
+  data: Presence[] = [];
   trigger: Subject<void> = new Subject<void>();
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
-  constructor(private personApi: PersonControllerService) {
+  constructor(private presenceApi: PresenceControllerService) {
     super();
   }
 
@@ -25,7 +25,7 @@ export class PersonsDataSource extends DataSource<Person> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<Person[]> {
+  connect(): Observable<Presence[]> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
@@ -38,8 +38,8 @@ export class PersonsDataSource extends DataSource<Person> {
     }
   }
 
-  public index(): void {
-    this.personApi.indexPersons().subscribe(data => {
+  public getOpen(): void {
+    this.presenceApi.allOpen().subscribe(data => {
       this.data = data;
       this.trigger.next();
     });
@@ -56,7 +56,7 @@ export class PersonsDataSource extends DataSource<Person> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: Person[]): Person[] {
+  private getPagedData(data: Presence[]): Presence[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -69,7 +69,7 @@ export class PersonsDataSource extends DataSource<Person> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: Person[]): Person[] {
+  private getSortedData(data: Presence[]): Presence[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -77,8 +77,8 @@ export class PersonsDataSource extends DataSource<Person> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'name':
-          return compare(a.firstname, b.firstname, isAsc);
+        case 'start':
+          return compare(a.start, b.start, isAsc);
         case 'id':
           return compare(+a.id, +b.id, isAsc);
         default:

@@ -20,13 +20,16 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import routeConfig from "./routes";
 import {provideRouter, RouterModule} from "@angular/router";
+import {HttpClientModule} from "@angular/common/http";
+import { PresencesComponent } from './presences/presences.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     DashboardComponent,
-    PersonsComponent
+    PersonsComponent,
+    PresencesComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import {provideRouter, RouterModule} from "@angular/router";
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    HttpClientModule
   ],
   providers: [
     provideProtractorTestingSupport(),

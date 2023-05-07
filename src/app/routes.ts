@@ -1,6 +1,7 @@
 import {Routes} from '@angular/router';
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {PersonsComponent} from "./persons/persons.component";
+import {PresencesComponent} from "./presences/presences.component";
 
 const routeConfig: Routes = [
   {
@@ -17,6 +18,11 @@ const routeConfig: Routes = [
     path: '',
     redirectTo: '/dashboard',
     pathMatch: 'full'
+  },
+  {
+    path: 'presences',
+    component: PresencesComponent,
+    title: 'Presences'
   }
 ];
 
