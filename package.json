@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "generate-client": "openapi-generator-cli generate -i http://localhost:8081/api-docs --enable-post-process-file --api-package api --model-package model -g typescript-angular -o ./src/api"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +26,7 @@
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.5.2",
     "@angular-devkit/build-angular": "^16.0.0",
     "@angular/cli": "~16.0.0",
     "@angular/compiler-cli": "^16.0.0",
