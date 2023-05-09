@@ -12,7 +12,7 @@
 
 
 export interface Person { 
-    id: number;
+    id?: number;
     firstname: string;
     lastname: string;
     status?: Person.StatusEnum;

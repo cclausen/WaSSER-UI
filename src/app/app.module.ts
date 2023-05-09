@@ -21,7 +21,16 @@ import {MatSortModule} from '@angular/material/sort';
 import routeConfig from "./routes";
 import {provideRouter, RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
-import { PresencesComponent } from './presences/presences.component';
+import {PresencesComponent} from './presences/presences.component';
+import {PersonComponent} from './persons/person/person.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatRadioModule} from "@angular/material/radio";
+import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 @NgModule({
   declarations: [
@@ -29,7 +38,8 @@ import { PresencesComponent } from './presences/presences.component';
     NavigationComponent,
     DashboardComponent,
     PersonsComponent,
-    PresencesComponent
+    PresencesComponent,
+    PersonComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +49,8 @@ import { PresencesComponent } from './presences/presences.component';
     ]),
     BrowserAnimationsModule,
     MatSlideToggleModule,
+    MatSnackBarModule,
+    MatNativeDateModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -50,7 +62,14 @@ import { PresencesComponent } from './presences/presences.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatOptionModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatDatepickerModule
   ],
   providers: [
     provideProtractorTestingSupport(),

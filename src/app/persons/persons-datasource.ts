@@ -80,7 +80,7 @@ export class PersonsDataSource extends DataSource<Person> {
         case 'name':
           return compare(a.firstname, b.firstname, isAsc);
         case 'id':
-          return compare(+a.id, +b.id, isAsc);
+          return compare(+a.id!, +b.id!, isAsc);
         default:
           return 0;
       }
