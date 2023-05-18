@@ -17,5 +17,19 @@ export interface Day {
     place?: Place;
     start?: string;
     end?: string;
+    amountOfVisitors?: number;
+    firstResponder?: number;
+    reanimations?: number;
+    aed?: number;
+    helpPersons?: number;
+    wasMedical?: number;
+    wasLifeThreatening?: number;
+    wasInWater?: number;
+    wasLifeThreateningForHelper?: number;
+    wasDead?: number;
+    wasDrowned?: number;
+    helpThings?: number;
+    helpEnvironment?: number;
+    helpAnimals?: number;
 }
 

@@ -4,6 +4,7 @@ api.module.ts
 api/achievementController.service.ts
 api/api.ts
 api/personController.service.ts
+api/placeController.service.ts
 api/presenceController.service.ts
 api/summaryController.service.ts
 configuration.ts

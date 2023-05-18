@@ -13,6 +13,8 @@
 
 export interface Place { 
     id?: number;
-    name?: string;
+    name: string;
+    district: string;
+    officialName: string;
 }
 

@@ -47,7 +47,7 @@ export class PersonComponent implements OnInit {
       formData.lifeguardFrom = this.formatDate(formData.lifeguardFrom);
       if (!formData.id) {
         this.personApi.create(formData).subscribe((person) => {
-          this.snackBar.open('Person created successfully!', 'Close', {
+          this.snackBar.open('Person erfolgreich erstellt!', 'Close', {
             duration: 3000,
           });
           this.personForm.patchValue(person);
@@ -55,7 +55,7 @@ export class PersonComponent implements OnInit {
         });
       } else {
         this.personApi.update(formData.id, formData).subscribe((person) => {
-          this.snackBar.open('Person updated successfully!', 'Close', {
+          this.snackBar.open('Person erfolgreich aktualisiert!', 'Close', {
             duration: 3000,
           });
           this.personForm.patchValue(person);

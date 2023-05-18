@@ -1,0 +1,23 @@
+<div class="example-container">
+  <form [formGroup]="placeForm">
+    <mat-form-field>
+      <input matInput placeholder="Id" formControlName="id" readonly/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name"/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Einsatzgebiet" formControlName="officialName"/>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Bezirk" formControlName="district"/>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="submitForm()">
+      Submit
+    </button>
+  </form>
+</div>

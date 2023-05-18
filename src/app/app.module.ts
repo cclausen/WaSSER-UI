@@ -37,6 +37,8 @@ import {MomentModule} from "ngx-moment";
 // Set the locale to German
 import 'moment/locale/de';
 import {DayOverviewComponent} from './components/day-overview/day-overview.component';
+import {PlacesComponent} from "./places/places.component";
+import {PlaceComponent} from "./places/place/place.component";
 
 const MY_DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -56,6 +58,8 @@ const MY_DATE_FORMATS: MatDateFormats = {
     NavigationComponent,
     DashboardComponent,
     PersonsComponent,
+    PlacesComponent,
+    PlaceComponent,
     PresencesComponent,
     PersonComponent,
     ActivePersonsComponent,
