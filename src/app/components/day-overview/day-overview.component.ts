@@ -33,4 +33,17 @@ export class DayOverviewComponent implements OnInit {
       return "";
     }
   }
+
+  sendSummary() {
+    this.summaryApi.sendSummary().subscribe(() => {
+      this.refreshSummary();
+    });
+  }
+
+  fillSummary() {
+    this.summaryApi.fillSummary().subscribe(url => {
+      window.open(url, '_blank');
+      this.refreshSummary();
+    });
+  }
 }
