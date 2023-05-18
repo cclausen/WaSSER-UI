@@ -1,14 +1,14 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {MatTable} from '@angular/material/table';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {PresencesDataSource} from './presences-datasource';
-import {Presence, PresenceControllerService} from "../../api";
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatTable } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { PresencesDataSource } from './presences-datasource';
+import { Presence, PresenceControllerService } from '../../api';
 
 @Component({
   selector: 'app-presences',
   templateUrl: './presences.component.html',
-  styleUrls: ['./presences.component.css']
+  styleUrls: ['./presences.component.css'],
 })
 export class PresencesComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;

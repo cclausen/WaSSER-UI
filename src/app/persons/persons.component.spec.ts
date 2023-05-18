@@ -18,7 +18,7 @@ describe('PersonsComponent', () => {
         MatPaginatorModule,
         MatSortModule,
         MatTableModule,
-      ]
+      ],
     }).compileComponents();
   }));
 

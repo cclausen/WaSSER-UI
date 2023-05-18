@@ -18,7 +18,7 @@ describe('PresencesComponent', () => {
         MatPaginatorModule,
         MatSortModule,
         MatTableModule,
-      ]
+      ],
     }).compileComponents();
   }));
 

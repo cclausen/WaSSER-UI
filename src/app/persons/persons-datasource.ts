@@ -1,9 +1,9 @@
-import {DataSource} from '@angular/cdk/collections';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {merge, Observable, Subject} from 'rxjs';
-import {Person, PersonControllerService} from "../../api";
-import {map} from "rxjs/operators";
+import { DataSource } from '@angular/cdk/collections';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { merge, Observable, Subject } from 'rxjs';
+import { Person, PersonControllerService } from '../../api';
+import { map } from 'rxjs/operators';
 
 /**
  * Data source for the Persons view. This class should
@@ -29,17 +29,24 @@ export class PersonsDataSource extends DataSource<Person> {
     if (this.paginator && this.sort) {
       // Combine everything that affects the rendered data into one update
       // stream for the data-table to consume.
-      return merge(this.trigger, this.paginator.page, this.sort.sortChange)
-        .pipe(map(() => {
+      return merge(
+        this.trigger,
+        this.paginator.page,
+        this.sort.sortChange
+      ).pipe(
+        map(() => {
           return this.getPagedData(this.getSortedData([...this.data]));
-        }));
+        })
+      );
     } else {
-      throw Error('Please set the paginator and sort on the data source before connecting.');
+      throw Error(
+        'Please set the paginator and sort on the data source before connecting.'
+      );
     }
   }
 
   public index(): void {
-    this.personApi.indexPersons().subscribe(data => {
+    this.personApi.indexPersons().subscribe((data) => {
       this.data = data;
       this.trigger.next();
     });
@@ -49,8 +56,7 @@ export class PersonsDataSource extends DataSource<Person> {
    *  Called when the table is being destroyed. Use this function, to clean up
    * any open connections or free any held resources that were set up during connect.
    */
-  disconnect(): void {
-  }
+  disconnect(): void {}
 
   /**
    * Paginate the data (client-side). If you're using server-side pagination,
@@ -89,6 +95,10 @@ export class PersonsDataSource extends DataSource<Person> {
 }
 
 /** Simple sort comparator for example ID/Name columns (for client-side sorting). */
-function compare(a: string | number, b: string | number, isAsc: boolean): number {
+function compare(
+  a: string | number,
+  b: string | number,
+  isAsc: boolean
+): number {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

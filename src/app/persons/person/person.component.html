@@ -1,39 +1,57 @@
 <div class="example-container">
   <form [formGroup]="personForm">
     <mat-form-field>
-      <input matInput placeholder="Vorname" formControlName="firstname">
+      <input matInput placeholder="Vorname" formControlName="firstname"/>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Nachname" formControlName="lastname">
+      <input matInput placeholder="Nachname" formControlName="lastname"/>
     </mat-form-field>
 
     <mat-form-field>
       <mat-select placeholder="Status" formControlName="status">
-        <mat-option *ngFor="let status of statusOptions" [value]="status">{{ status }}</mat-option>
+        <mat-option *ngFor="let status of statusOptions" [value]="status">{{
+          status
+          }}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field>
       <mat-select placeholder="Rettungsschwimmer" formControlName="lifeguard">
-        <mat-option *ngFor="let lifeguard of lifeguardOptions" [value]="lifeguard">{{ lifeguard }}</mat-option>
+        <mat-option
+          *ngFor="let lifeguard of lifeguardOptions"
+          [value]="lifeguard"
+        >{{ lifeguard }}</mat-option
+        >
       </mat-select>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput [matDatepicker]="rs" placeholder="RS von" formControlName="lifeguardFrom"
-             [value]="convertToDate(personForm.get('lifeguardFrom')?.value)">
+      <input
+        matInput
+        [matDatepicker]="rs"
+        placeholder="RS von"
+        formControlName="lifeguardFrom"
+        [value]="convertToDate(personForm.get('lifeguardFrom')?.value)"
+      />
       <mat-datepicker-toggle matSuffix [for]="rs"></mat-datepicker-toggle>
       <mat-datepicker #rs></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput [matDatepicker]="rs_for" placeholder="Fitness" formControlName="fitness"
-             [value]="convertToDate(personForm.get('fitness')?.value)">
+      <input
+        matInput
+        [matDatepicker]="rs_for"
+        placeholder="Fitness"
+        formControlName="fitness"
+        [value]="convertToDate(personForm.get('fitness')?.value)"
+      />
       <mat-datepicker-toggle matSuffix [for]="rs_for"></mat-datepicker-toggle>
       <mat-datepicker #rs_for></mat-datepicker>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="submitForm()">Submit</button>
+    <button mat-raised-button color="primary" (click)="submitForm()">
+      Submit
+    </button>
   </form>
 </div>
