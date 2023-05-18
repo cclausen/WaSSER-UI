@@ -5,14 +5,17 @@ api/achievementController.service.ts
 api/api.ts
 api/personController.service.ts
 api/presenceController.service.ts
+api/summaryController.service.ts
 configuration.ts
 encoder.ts
 git_push.sh
 index.ts
 model/achievement.ts
+model/day.ts
 model/models.ts
 model/person.ts
 model/place.ts
 model/presence.ts
+model/summary.ts
 param.ts
 variables.ts
