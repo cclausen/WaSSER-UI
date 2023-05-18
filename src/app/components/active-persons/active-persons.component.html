@@ -1,0 +1,50 @@
+<mat-card appearance="outlined" class="dashboard-card">
+  <mat-card-header>
+    <mat-card-title>Active Persons</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="dashboard-card-content">
+    <div *ngIf="activePersons.length; else noActivePersons">
+      <mat-nav-list>
+        <mat-list-item *ngFor="let person of augmentedPersons">
+          <div class="list-item">
+            <div class="list-item-content">
+              <div class="line-container">
+                <div matLine>{{ person.firstname }} {{ person.lastname }}</div>
+                <div matLine class="guard-status" *ngIf="person.presence">
+                  Ankunft {{ person.presence.start | amTimeAgo }} </div>
+              </div>
+            </div>
+            <div class="menu-wrapper">
+              <button mat-icon-button (click)="startGuarding(person)" *ngIf="!person.presence">
+                <mat-icon>play_arrow</mat-icon>
+              </button>
+              <button mat-icon-button (click)="stopGuarding(person)" *ngIf="person.presence">
+                <mat-icon>stop</mat-icon>
+              </button>
+              <button mat-icon-button [matMenuTriggerFor]="menu" [matMenuTriggerData]="person">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-list-item>
+      </mat-nav-list>
+
+    </div>
+    <ng-template #noActivePersons>
+      <div>No active persons found.</div>
+    </ng-template>
+  </mat-card-content>
+</mat-card>
+
+<mat-menu #menu="matMenu">
+  <ng-template matMenuContent let-person="matMenuData">
+    <button mat-menu-item (click)="toggleGuarding(person)">
+      <mat-icon>{{ person.guarding ? 'stop' : 'play_arrow' }}</mat-icon>
+      {{ person.guarding ? 'Stop Guarding' : 'Start Guarding' }}
+    </button>
+    <button mat-menu-item>
+      <mat-icon>star</mat-icon>
+      Special Action
+    </button>
+  </ng-template>
+</mat-menu>

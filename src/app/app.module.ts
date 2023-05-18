@@ -31,6 +31,12 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MenuDialogComponent} from "./components/menu-dialog-component/menu-dialog.component";
+import {MatDialogModule} from "@angular/material/dialog";
+import {ActivePersonsComponent} from './components/active-persons/active-persons.component';
+import {MomentModule} from "ngx-moment";
+// Set the locale to German
+import 'moment/locale/de';
 
 const MY_DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -52,6 +58,8 @@ const MY_DATE_FORMATS: MatDateFormats = {
     PersonsComponent,
     PresencesComponent,
     PersonComponent,
+    MenuDialogComponent,
+    ActivePersonsComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,6 +90,8 @@ const MY_DATE_FORMATS: MatDateFormats = {
     ReactiveFormsModule,
     MatInputModule,
     MatDatepickerModule,
+    MatDialogModule,
+    MomentModule
   ],
   providers: [
     provideProtractorTestingSupport(),
