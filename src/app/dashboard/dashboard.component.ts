@@ -1,7 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {map} from 'rxjs/operators';
-import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-dashboard',
@@ -30,8 +29,6 @@ export class DashboardComponent {
     })
   );
 
-  constructor(
-    private dialog: MatDialog,
-  ) {
+  constructor() {
   }
 }
