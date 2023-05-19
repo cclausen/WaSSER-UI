@@ -276,10 +276,10 @@ export class PersonControllerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getPersonsByStatus(status: 'ILL' | 'RETIRED' | 'ACTIVE', observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<Person>>;
-    public getPersonsByStatus(status: 'ILL' | 'RETIRED' | 'ACTIVE', observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<Person>>>;
-    public getPersonsByStatus(status: 'ILL' | 'RETIRED' | 'ACTIVE', observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<Person>>>;
-    public getPersonsByStatus(status: 'ILL' | 'RETIRED' | 'ACTIVE', observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
+    public getPersonsByStatus(status: 'ILL' | 'RETIRED' | 'ACTIVE' | 'GUEST', observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<Array<Person>>;
+    public getPersonsByStatus(status: 'ILL' | 'RETIRED' | 'ACTIVE' | 'GUEST', observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpResponse<Array<Person>>>;
+    public getPersonsByStatus(status: 'ILL' | 'RETIRED' | 'ACTIVE' | 'GUEST', observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<HttpEvent<Array<Person>>>;
+    public getPersonsByStatus(status: 'ILL' | 'RETIRED' | 'ACTIVE' | 'GUEST', observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json', context?: HttpContext}): Observable<any> {
         if (status === null || status === undefined) {
             throw new Error('Required parameter status was null or undefined when calling getPersonsByStatus.');
         }
@@ -315,7 +315,7 @@ export class PersonControllerService {
             }
         }
 
-        let localVarPath = `/api/persons/byStatus/${this.configuration.encodeParam({name: "status", value: status, in: "path", style: "simple", explode: false, dataType: "'ILL' | 'RETIRED' | 'ACTIVE'", dataFormat: undefined})}`;
+        let localVarPath = `/api/persons/byStatus/${this.configuration.encodeParam({name: "status", value: status, in: "path", style: "simple", explode: false, dataType: "'ILL' | 'RETIRED' | 'ACTIVE' | 'GUEST'", dataFormat: undefined})}`;
         return this.httpClient.request<Array<Person>>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,

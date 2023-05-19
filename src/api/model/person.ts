@@ -15,17 +15,18 @@ export interface Person {
     id?: number;
     firstname: string;
     lastname: string;
-    status?: Person.StatusEnum;
+    status: Person.StatusEnum;
     lifeguard?: Person.LifeguardEnum;
     lifeguardFrom?: string;
     fitness?: string;
 }
 export namespace Person {
-    export type StatusEnum = 'ILL' | 'RETIRED' | 'ACTIVE';
+    export type StatusEnum = 'ILL' | 'RETIRED' | 'ACTIVE' | 'GUEST';
     export const StatusEnum = {
         Ill: 'ILL' as StatusEnum,
         Retired: 'RETIRED' as StatusEnum,
-        Active: 'ACTIVE' as StatusEnum
+        Active: 'ACTIVE' as StatusEnum,
+        Guest: 'GUEST' as StatusEnum
     };
     export type LifeguardEnum = 'NONE' | 'JUNIOR' | 'BRONZE' | 'SILVER' | 'GOLD';
     export const LifeguardEnum = {
