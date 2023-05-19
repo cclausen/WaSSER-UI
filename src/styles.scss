@@ -26,3 +26,49 @@ body {
 
 .dashboard-card-content {
 }
+
+.icon-stack, .icon-combined {
+  width: 1.5em;
+  height: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-combined .mat-icon, .icon-stack-1, .icon-stack-2 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.icon-combined .mat-icon:first-child {
+  color: #673ab7;
+  font-size: 1.2em;
+}
+
+.icon-combined .mat-icon:nth-child(n + 2) {
+  color: white;
+  font-size: 0.7em;
+  margin-top: 0.3em;
+}
+
+.icon-stack-1::before {
+  font-size: 0.5em;
+}
+
+.icon-stack-2::before {
+  font-size: 1em;
+  line-height: 1.25em;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+}
+
+.icon-container .mat-icon {
+  margin-right: 0.5em; /* Adjust the margin as needed */
+}

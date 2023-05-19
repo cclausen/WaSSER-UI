@@ -10,6 +10,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class DayComponent implements OnInit {
   places: Place[] = [];
   dayForm: FormGroup = new FormGroup({});
+  expand: boolean = false;
 
   constructor(private dayApi: DayControllerService, private placeApi: PlaceControllerService) {
   }
@@ -65,5 +66,10 @@ export class DayComponent implements OnInit {
 
   comparePlaces(place1: Place, place2: Place): boolean {
     return place1 && place2 ? place1.id === place2.id : place1 === place2;
+  }
+
+  increase(attribute: string) {
+    const current = this.dayForm.controls[attribute].value;
+    this.dayForm.controls[attribute].setValue(current + 1);
   }
 }

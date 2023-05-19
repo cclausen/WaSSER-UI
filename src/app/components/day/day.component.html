@@ -3,78 +3,184 @@
     <mat-card-title>Tages-Einsätze</mat-card-title>
   </mat-card-header>
   <mat-card-content class="dashboard-card-content">
+    <mat-grid-list cols="4" rowHeight="50px">
+      <mat-grid-tile>
+        <button mat-icon-button color="primary" (click)="increase('helpAnimals')">
+          <mat-icon color="accent">pets</mat-icon>
+        </button>
+        <span>Hilfeleistungen bei Tieren: {{ dayForm.controls['helpAnimals'].value }}</span>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-icon-button color="primary" (click)="increase('helpThings')">
+          <mat-icon>euro_symbol</mat-icon>
+        </button>
+        <span>Hilfeleistungen bei Sachwerten: {{ dayForm.controls['helpThings'].value }}</span>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-icon-button color="primary" (click)="increase('helpEnvironment')">
+          <mat-icon>eco</mat-icon>
+        </button>
+        <span>Hilfeleistungen bei Umweltgefahren: {{ dayForm.controls['helpEnvironment'].value }}</span>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-icon-button color="primary" (click)="increase('firstResponder')">
+          <mat-icon>phone_in_talk</mat-icon>
+        </button>
+        <span>First Responder: {{ dayForm.controls['firstResponder'].value }}</span>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <button mat-icon-button color="primary" (click)="increase('reanimations')">
+          <div class="icon-combined">
+            <mat-icon>favorite</mat-icon>
+            <mat-icon>add</mat-icon>
+          </div>
+        </button>
+        <span>Reanimationen: {{ dayForm.controls['reanimations'].value }}</span>
+      </mat-grid-tile>
+      <mat-grid-tile *ngIf="dayForm.controls['reanimations'].value > 0">
+        <button mat-icon-button color="primary" (click)="increase('aed')">
+          <div class="icon-combined">
+            <mat-icon>favorite</mat-icon>
+            <mat-icon>bolt</mat-icon>
+          </div>
+        </button>
+        <span>AED genutzt: {{ dayForm.controls['aed'].value }}</span>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-icon-button color="primary" (click)="increase('helpPersons')">
+          <mat-icon>person</mat-icon>
+
+        </button>
+        <span>Hilfeleistungen: {{ dayForm.controls['helpPersons'].value }}</span>
+      </mat-grid-tile>
+      <mat-grid-tile *ngIf="dayForm.controls['helpPersons'].value > 0">
+        <button mat-icon-button color="primary" (click)="increase('wasMedical')">
+          <mat-icon>medical_services</mat-icon>
+
+        </button>
+        <span>Davon Medizinisch: {{ dayForm.controls['wasMedical'].value }}</span>
+      </mat-grid-tile>
+      <mat-grid-tile *ngIf="dayForm.controls['helpPersons'].value > 0">
+        <button mat-icon-button color="primary" (click)="increase('wasLifeThreatening')">
+          <div class="icon-combined">
+            <mat-icon>favorite</mat-icon>
+            <mat-icon>close</mat-icon>
+          </div>
+
+        </button>
+        <span>Davon aus Lebensgefahr: {{ dayForm.controls['wasLifeThreatening'].value }}</span>
+      </mat-grid-tile>
+      <mat-grid-tile *ngIf="dayForm.controls['helpPersons'].value > 0">
+        <button mat-icon-button color="primary" (click)="increase('wasInWater')">
+          <mat-icon>pool</mat-icon>
+
+        </button>
+        <span>Davon aus dem Wasser: {{ dayForm.controls['wasInWater'].value }}</span>
+      </mat-grid-tile>
+      <mat-grid-tile *ngIf="dayForm.controls['helpPersons'].value > 0">
+        <button mat-icon-button color="primary" (click)="increase('wasLifeThreateningForHelper')">
+          <mat-icon>pool</mat-icon>
+
+        </button>
+        <span>Davon unter Lebensgefahr für den Retter: {{ dayForm.controls['wasLifeThreateningForHelper'].value }}</span>
+      </mat-grid-tile>
+      <mat-grid-tile *ngIf="dayForm.controls['helpPersons'].value > 0">
+        <button mat-icon-button color="primary" (click)="increase('wasDead')">
+          <mat-icon>pool</mat-icon>
+
+        </button>
+        <span>Davon verstorben: {{ dayForm.controls['wasDead'].value }}</span>
+      </mat-grid-tile>
+      <mat-grid-tile *ngIf="dayForm.controls['wasDead'].value > 0">
+        <button mat-icon-button color="primary" (click)="increase('wasDrowned')">
+          <mat-icon>pool</mat-icon>
+
+        </button>
+        <span>Davon ertrunken: {{ dayForm.controls['wasDrowned'].value }}</span>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+
+    <div>
+      <button mat-icon-button color="primary" (click)="expand = !expand">
+        <mat-icon>{{ expand ? 'expand_less' : 'expand_more' }}</mat-icon>
+      </button>
+      <span>Details</span>
+    </div>
+
     <form [formGroup]="dayForm">
-      <mat-form-field>
-        <mat-label>Ort</mat-label>
-        <mat-select formControlName="place" [compareWith]="comparePlaces">
-          <mat-option *ngFor="let place of places" [value]="place">{{ place.name }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <!--      <mat-form-field>-->
-      <!--        <mat-label>Besucher</mat-label>-->
-      <!--        <mat-slider discrete showTickMarks min="0" max="5">-->
-      <!--          <input matSliderThumb [formControl]="dayForm.controls['amountOfVisitors']">-->
-      <!--        </mat-slider>-->
-      <!--      </mat-form-field>-->
-      <mat-form-field>
-        <mat-label>Besucher</mat-label>
-        <input matInput type="number" formControlName="amountOfVisitors">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>First Responder</mat-label>
-        <input matInput type="number" formControlName="firstResponder">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Reanimationen</mat-label>
-        <input matInput type="number" formControlName="reanimations">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>AED benutzt</mat-label>
-        <input matInput type="number" formControlName="aed">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Hilfeleistungen</mat-label>
-        <input matInput type="number" formControlName="helpPersons">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Davon Medizinisch</mat-label>
-        <input matInput type="number" formControlName="wasMedical">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Davon aus Lebensgefahr</mat-label>
-        <input matInput type="number" formControlName="wasLifeThreatening">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Davon aus dem Wasser</mat-label>
-        <input matInput type="number" formControlName="wasInWater">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Davon unter Lebensgefahr für den Retter</mat-label>
-        <input matInput type="number" formControlName="wasLifeThreateningForHelper">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Davon Todesfälle</mat-label>
-        <input matInput type="number" formControlName="wasDead">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Davon ertrunken</mat-label>
-        <input matInput type="number" formControlName="wasDrowned">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Hilfeeistungen Sachwerte</mat-label>
-        <input matInput type="number" formControlName="helpThings">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Hilfeeistungen Umwelt</mat-label>
-        <input matInput type="number" formControlName="helpEnvironment">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Hilfeeistungen Tiere</mat-label>
-        <input matInput type="number" formControlName="helpAnimals">
-      </mat-form-field>
+      <div [hidden]="!expand">
+        <mat-form-field>
+          <mat-label>Ort</mat-label>
+          <mat-select formControlName="place" [compareWith]="comparePlaces">
+            <mat-option *ngFor="let place of places" [value]="place">{{ place.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!--      <mat-form-field>-->
+        <!--        <mat-label>Besucher</mat-label>-->
+        <!--        <mat-slider discrete showTickMarks min="0" max="5">-->
+        <!--          <input matSliderThumb [formControl]="dayForm.controls['amountOfVisitors']">-->
+        <!--        </mat-slider>-->
+        <!--      </mat-form-field>-->
+        <mat-form-field>
+          <mat-label>Besucher</mat-label>
+          <input matInput type="number" formControlName="amountOfVisitors">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>First Responder</mat-label>
+          <input matInput type="number" formControlName="firstResponder">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Reanimationen</mat-label>
+          <input matInput type="number" formControlName="reanimations">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>AED benutzt</mat-label>
+          <input matInput type="number" formControlName="aed">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Hilfeleistungen</mat-label>
+          <input matInput type="number" formControlName="helpPersons">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Davon Medizinisch</mat-label>
+          <input matInput type="number" formControlName="wasMedical">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Davon aus Lebensgefahr</mat-label>
+          <input matInput type="number" formControlName="wasLifeThreatening">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Davon aus dem Wasser</mat-label>
+          <input matInput type="number" formControlName="wasInWater">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Davon unter Lebensgefahr für den Retter</mat-label>
+          <input matInput type="number" formControlName="wasLifeThreateningForHelper">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Davon Todesfälle</mat-label>
+          <input matInput type="number" formControlName="wasDead">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Davon ertrunken</mat-label>
+          <input matInput type="number" formControlName="wasDrowned">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Hilfeeistungen Sachwerte</mat-label>
+          <input matInput type="number" formControlName="helpThings">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Hilfeeistungen Umwelt</mat-label>
+          <input matInput type="number" formControlName="helpEnvironment">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Hilfeeistungen Tiere</mat-label>
+          <input matInput type="number" formControlName="helpAnimals">
+        </mat-form-field>
 
-      <!-- Add more form fields for other properties -->
-
+      </div>
       <button mat-raised-button color="primary" [disabled]="!dayForm.valid" (click)="saveDay()">Save</button>
     </form>
 
