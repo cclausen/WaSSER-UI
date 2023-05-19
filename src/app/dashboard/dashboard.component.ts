@@ -16,15 +16,15 @@ export class DashboardComponent {
       if (matches) {
         return [
           {title: 'Aktive Personen', cols: 1, rows: 1},
-          {title: 'Tages-Übersicht', cols: 1, rows: 1},
-          {title: 'Tag', cols: 2, rows: 2},
+          {title: 'Dienst-Übersicht', cols: 1, rows: 1},
+          {title: 'Dienst', cols: 2, rows: 2},
         ];
       }
 
       return [
         {title: 'Aktive Personen', cols: 1, rows: 1},
-        {title: 'Tages-Übersicht', cols: 1, rows: 1},
-        {title: 'Tag', cols: 2, rows: 2},
+        {title: 'Dienst-Übersicht', cols: 1, rows: 1},
+        {title: 'Dienst', cols: 2, rows: 2},
       ];
     })
   );

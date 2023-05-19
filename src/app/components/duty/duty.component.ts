@@ -1,18 +1,18 @@
 import {Component, OnInit} from '@angular/core';
-import {Day, DayControllerService, Place, PlaceControllerService} from "../../../api";
+import {Duty, DutyControllerService, Place, PlaceControllerService} from "../../../api";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'app-day',
-  templateUrl: './day.component.html',
-  styleUrls: ['./day.component.css']
+  selector: 'app-duty',
+  templateUrl: './duty.component.html',
+  styleUrls: ['./duty.component.css']
 })
-export class DayComponent implements OnInit {
+export class DutyComponent implements OnInit {
   places: Place[] = [];
-  dayForm: FormGroup = new FormGroup({});
+  dutyForm: FormGroup = new FormGroup({});
   expand: boolean = false;
 
-  constructor(private dayApi: DayControllerService, private placeApi: PlaceControllerService) {
+  constructor(private dutyApi: DutyControllerService, private placeApi: PlaceControllerService) {
   }
 
   ngOnInit(): void {
@@ -23,18 +23,18 @@ export class DayComponent implements OnInit {
   loadPlaces(): void {
     this.placeApi.indexPlaces().subscribe(places => {
       this.places = places;
-      this.loadDay();
+      this.loadDuty();
     });
   }
 
-  loadDay(): void {
-    this.dayApi.getToday().subscribe((day: Day) => {
-      this.dayForm.patchValue(day);
+  loadDuty(): void {
+    this.dutyApi.getToday().subscribe((duty: Duty) => {
+      this.dutyForm.patchValue(duty);
     });
   }
 
   private createForm() {
-    this.dayForm = new FormGroup({
+    this.dutyForm = new FormGroup({
       id: new FormControl<number | null>({value: null, disabled: true}, {nonNullable: false}),
       place: new FormControl<Place | null>(null, Validators.required),
       date: new FormControl<string>({value: '', disabled: true}),
@@ -55,11 +55,11 @@ export class DayComponent implements OnInit {
     });
   }
 
-  saveDay() {
-    if (this.dayForm.valid) {
-      const formData = this.dayForm.getRawValue() as Day;
-      this.dayApi.updateDay(formData).subscribe((day) => {
-        this.dayForm.patchValue(day);
+  saveDuty() {
+    if (this.dutyForm.valid) {
+      const formData = this.dutyForm.getRawValue() as Duty;
+      this.dutyApi.updateDuty(formData).subscribe((duty) => {
+        this.dutyForm.patchValue(duty);
       });
     }
   }
@@ -69,12 +69,12 @@ export class DayComponent implements OnInit {
   }
 
   increase(attribute: string) {
-    const current = this.dayForm.controls[attribute].value;
-    this.dayForm.controls[attribute].setValue(current + 1);
+    const current = this.dutyForm.controls[attribute].value;
+    this.dutyForm.controls[attribute].setValue(current + 1);
   }
 
   updateAmountOfVisitors(value: number) {
-    this.dayForm.controls['amountOfVisitors'].setValue(value);
+    this.dutyForm.controls['amountOfVisitors'].setValue(value);
   }
 
   visitorString(value: string) {

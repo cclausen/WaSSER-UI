@@ -1,11 +1,11 @@
 <mat-card appearance="outlined" class="dashboard-card">
   <mat-card-header>
-    <mat-card-title>Tages-Einsätze</mat-card-title>
+    <mat-card-title>Dienst-Einsätze</mat-card-title>
   </mat-card-header>
   <mat-card-content class="dashboard-card-content">
-    <h3>{{visitorString(dayForm.controls['amountOfVisitors'].value)}}</h3>
+    <h3>{{visitorString(dutyForm.controls['amountOfVisitors'].value)}}</h3>
     <mat-slider discrete showTickMarks min="0" max="5" style="width:100%">
-      <input matSliderThumb [value]="dayForm.controls['amountOfVisitors'].value"
+      <input matSliderThumb [value]="dutyForm.controls['amountOfVisitors'].value"
              (input)="updateAmountOfVisitors($any($event.target).value)">
     </mat-slider>
     <mat-grid-list cols="4" rowHeight="50px">
@@ -13,25 +13,25 @@
         <button mat-icon-button color="primary" (click)="increase('helpAnimals')">
           <mat-icon color="accent">pets</mat-icon>
         </button>
-        <span>Hilfeleistungen bei Tieren: {{ dayForm.controls['helpAnimals'].value }}</span>
+        <span>Hilfeleistungen bei Tieren: {{ dutyForm.controls['helpAnimals'].value }}</span>
       </mat-grid-tile>
       <mat-grid-tile>
         <button mat-icon-button color="primary" (click)="increase('helpThings')">
           <mat-icon>euro_symbol</mat-icon>
         </button>
-        <span>Hilfeleistungen bei Sachwerten: {{ dayForm.controls['helpThings'].value }}</span>
+        <span>Hilfeleistungen bei Sachwerten: {{ dutyForm.controls['helpThings'].value }}</span>
       </mat-grid-tile>
       <mat-grid-tile>
         <button mat-icon-button color="primary" (click)="increase('helpEnvironment')">
           <mat-icon>eco</mat-icon>
         </button>
-        <span>Hilfeleistungen bei Umweltgefahren: {{ dayForm.controls['helpEnvironment'].value }}</span>
+        <span>Hilfeleistungen bei Umweltgefahren: {{ dutyForm.controls['helpEnvironment'].value }}</span>
       </mat-grid-tile>
       <mat-grid-tile>
         <button mat-icon-button color="primary" (click)="increase('firstResponder')">
           <mat-icon>phone_in_talk</mat-icon>
         </button>
-        <span>First Responder: {{ dayForm.controls['firstResponder'].value }}</span>
+        <span>First Responder: {{ dutyForm.controls['firstResponder'].value }}</span>
       </mat-grid-tile>
 
       <mat-grid-tile>
@@ -41,32 +41,32 @@
             <mat-icon>add</mat-icon>
           </div>
         </button>
-        <span>Reanimationen: {{ dayForm.controls['reanimations'].value }}</span>
+        <span>Reanimationen: {{ dutyForm.controls['reanimations'].value }}</span>
       </mat-grid-tile>
-      <mat-grid-tile *ngIf="dayForm.controls['reanimations'].value > 0">
+      <mat-grid-tile *ngIf="dutyForm.controls['reanimations'].value > 0">
         <button mat-icon-button color="primary" (click)="increase('aed')">
           <div class="icon-combined">
             <mat-icon>favorite</mat-icon>
             <mat-icon>bolt</mat-icon>
           </div>
         </button>
-        <span>AED genutzt: {{ dayForm.controls['aed'].value }}</span>
+        <span>AED genutzt: {{ dutyForm.controls['aed'].value }}</span>
       </mat-grid-tile>
       <mat-grid-tile>
         <button mat-icon-button color="primary" (click)="increase('helpPersons')">
           <mat-icon>person</mat-icon>
 
         </button>
-        <span>Hilfeleistungen: {{ dayForm.controls['helpPersons'].value }}</span>
+        <span>Hilfeleistungen: {{ dutyForm.controls['helpPersons'].value }}</span>
       </mat-grid-tile>
-      <mat-grid-tile *ngIf="dayForm.controls['helpPersons'].value > 0">
+      <mat-grid-tile *ngIf="dutyForm.controls['helpPersons'].value > 0">
         <button mat-icon-button color="primary" (click)="increase('wasMedical')">
           <mat-icon>medical_services</mat-icon>
 
         </button>
-        <span>Davon Medizinisch: {{ dayForm.controls['wasMedical'].value }}</span>
+        <span>Davon Medizinisch: {{ dutyForm.controls['wasMedical'].value }}</span>
       </mat-grid-tile>
-      <mat-grid-tile *ngIf="dayForm.controls['helpPersons'].value > 0">
+      <mat-grid-tile *ngIf="dutyForm.controls['helpPersons'].value > 0">
         <button mat-icon-button color="primary" (click)="increase('wasLifeThreatening')">
           <div class="icon-combined">
             <mat-icon>favorite</mat-icon>
@@ -74,35 +74,35 @@
           </div>
 
         </button>
-        <span>Davon aus Lebensgefahr: {{ dayForm.controls['wasLifeThreatening'].value }}</span>
+        <span>Davon aus Lebensgefahr: {{ dutyForm.controls['wasLifeThreatening'].value }}</span>
       </mat-grid-tile>
-      <mat-grid-tile *ngIf="dayForm.controls['helpPersons'].value > 0">
+      <mat-grid-tile *ngIf="dutyForm.controls['helpPersons'].value > 0">
         <button mat-icon-button color="primary" (click)="increase('wasInWater')">
           <mat-icon>pool</mat-icon>
 
         </button>
-        <span>Davon aus dem Wasser: {{ dayForm.controls['wasInWater'].value }}</span>
+        <span>Davon aus dem Wasser: {{ dutyForm.controls['wasInWater'].value }}</span>
       </mat-grid-tile>
-      <mat-grid-tile *ngIf="dayForm.controls['helpPersons'].value > 0">
+      <mat-grid-tile *ngIf="dutyForm.controls['helpPersons'].value > 0">
         <button mat-icon-button color="primary" (click)="increase('wasLifeThreateningForHelper')">
           <mat-icon>pool</mat-icon>
 
         </button>
-        <span>Davon unter Lebensgefahr für den Retter: {{ dayForm.controls['wasLifeThreateningForHelper'].value }}</span>
+        <span>Davon unter Lebensgefahr für den Retter: {{ dutyForm.controls['wasLifeThreateningForHelper'].value }}</span>
       </mat-grid-tile>
-      <mat-grid-tile *ngIf="dayForm.controls['helpPersons'].value > 0">
+      <mat-grid-tile *ngIf="dutyForm.controls['helpPersons'].value > 0">
         <button mat-icon-button color="primary" (click)="increase('wasDead')">
           <mat-icon>pool</mat-icon>
 
         </button>
-        <span>Davon verstorben: {{ dayForm.controls['wasDead'].value }}</span>
+        <span>Davon verstorben: {{ dutyForm.controls['wasDead'].value }}</span>
       </mat-grid-tile>
-      <mat-grid-tile *ngIf="dayForm.controls['wasDead'].value > 0">
+      <mat-grid-tile *ngIf="dutyForm.controls['wasDead'].value > 0">
         <button mat-icon-button color="primary" (click)="increase('wasDrowned')">
           <mat-icon>pool</mat-icon>
 
         </button>
-        <span>Davon ertrunken: {{ dayForm.controls['wasDrowned'].value }}</span>
+        <span>Davon ertrunken: {{ dutyForm.controls['wasDrowned'].value }}</span>
       </mat-grid-tile>
     </mat-grid-list>
 
@@ -114,7 +114,7 @@
       <span>Details</span>
     </div>
 
-    <form [formGroup]="dayForm">
+    <form [formGroup]="dutyForm">
       <div [hidden]="!expand">
         <mat-form-field>
           <mat-label>Ort</mat-label>
@@ -180,7 +180,7 @@
         </mat-form-field>
 
       </div>
-      <button mat-raised-button color="primary" [disabled]="!dayForm.valid" (click)="saveDay()">Save</button>
+      <button mat-raised-button color="primary" [disabled]="!dutyForm.valid" (click)="saveDuty()">Save</button>
     </form>
 
 

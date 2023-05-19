@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "generate-client": "openapi-generator-cli generate -i http://localhost:8081/api-docs --enable-post-process-file --api-package api --model-package model -g typescript-angular -o ./src/api"

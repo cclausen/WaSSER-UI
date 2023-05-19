@@ -1,6 +1,6 @@
 <mat-card appearance="outlined" class="dashboard-card">
   <mat-card-header>
-    <mat-card-title>Tages-Übersicht</mat-card-title>
+    <mat-card-title>Dienst-Übersicht</mat-card-title>
     <button mat-icon-button class="refresh-button" (click)="refreshSummary()">
       <mat-icon>refresh</mat-icon>
     </button>
@@ -13,7 +13,7 @@
   </mat-card-header>
   <mat-card-content class="dashboard-card-content" *ngIf="(summary | async) as summaryData">
     <p>Erstellt am: {{ summaryData?.created }}</p>
-    <p>Tag: {{ summaryData?.day?.date }}</p>
+    <p>Dienst: {{ summaryData?.duty?.date }}</p>
     <p>Personen: {{ getPersonList(summaryData?.persons) }}</p>
     <p>Ort: {{ summaryData?.place?.name }}</p>
     <p>Anwesenheiten: {{ summaryData?.presences?.length }}</p>

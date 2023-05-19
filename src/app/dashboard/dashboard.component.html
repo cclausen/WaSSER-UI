@@ -3,7 +3,7 @@
   <mat-grid-list cols="2" rowHeight="350px">
     <ng-container *ngFor="let card of cards | async">
       <mat-grid-tile
-        *ngIf="card.title !== 'Aktive Personen' && card.title !== 'Tages-Übersicht' && card.title !== 'Tag'"
+        *ngIf="card.title !== 'Aktive Personen' && card.title !== 'Dienst-Übersicht' && card.title !== 'Dienst'"
         [colspan]="card.cols"
         [rowspan]="card.rows"
       >
@@ -35,15 +35,15 @@
                      [rowspan]="card.rows">
         <app-active-persons/>
       </mat-grid-tile>
-      <mat-grid-tile *ngIf="card.title === 'Tages-Übersicht'"
+      <mat-grid-tile *ngIf="card.title === 'Dienst-Übersicht'"
                      [colspan]="card.cols"
                      [rowspan]="card.rows">
-        <app-day-overview/>
+        <app-duty-overview/>
       </mat-grid-tile>
-      <mat-grid-tile *ngIf="card.title === 'Tag'"
+      <mat-grid-tile *ngIf="card.title === 'Dienst'"
                      [colspan]="card.cols"
                      [rowspan]="card.rows">
-        <app-day/>
+        <app-duty/>
       </mat-grid-tile>
     </ng-container>
   </mat-grid-list>

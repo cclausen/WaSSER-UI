@@ -1,5 +1,5 @@
 export * from './achievement';
-export * from './day';
+export * from './duty';
 export * from './person';
 export * from './place';
 export * from './presence';

@@ -36,10 +36,10 @@ import {ActivePersonsComponent} from './components/active-persons/active-persons
 import {MomentModule} from "ngx-moment";
 // Set the locale to German
 import 'moment/locale/de';
-import {DayOverviewComponent} from './components/day-overview/day-overview.component';
+import {DutyOverviewComponent} from './components/duty-overview/duty-overview.component';
 import {PlacesComponent} from "./places/places.component";
 import {PlaceComponent} from "./places/place/place.component";
-import {DayComponent} from './components/day/day.component';
+import {DutyComponent} from './components/duty/duty.component';
 import {MatSliderModule} from "@angular/material/slider";
 
 const MY_DATE_FORMATS: MatDateFormats = {
@@ -65,8 +65,8 @@ const MY_DATE_FORMATS: MatDateFormats = {
     PresencesComponent,
     PersonComponent,
     ActivePersonsComponent,
-    DayOverviewComponent,
-    DayComponent,
+    DutyOverviewComponent,
+    DutyComponent,
   ],
   imports: [
     BrowserModule,

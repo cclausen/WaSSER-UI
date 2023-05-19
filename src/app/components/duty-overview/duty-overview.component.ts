@@ -3,11 +3,11 @@ import {Person, Summary, SummaryControllerService} from "../../../api";
 import {Observable, of} from "rxjs";
 
 @Component({
-  selector: 'app-day-overview',
-  templateUrl: './day-overview.component.html',
-  styleUrls: ['./day-overview.component.scss']
+  selector: 'app-duty-overview',
+  templateUrl: './duty-overview.component.html',
+  styleUrls: ['./duty-overview.component.scss']
 })
-export class DayOverviewComponent implements OnInit {
+export class DutyOverviewComponent implements OnInit {
   summary: Observable<Summary>;
 
   constructor(private summaryApi: SummaryControllerService) {

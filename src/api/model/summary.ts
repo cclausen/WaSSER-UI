@@ -9,15 +9,15 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { Duty } from './duty';
 import { Presence } from './presence';
-import { Day } from './day';
 import { Person } from './person';
 import { Place } from './place';
 
 
 export interface Summary { 
     created: string;
-    day: Day;
+    duty: Duty;
     persons: Set<Person>;
     place: Place;
     presences: Array<Presence>;
