@@ -3,6 +3,11 @@
     <mat-card-title>Tages-Einsätze</mat-card-title>
   </mat-card-header>
   <mat-card-content class="dashboard-card-content">
+    <h3>{{visitorString(dayForm.controls['amountOfVisitors'].value)}}</h3>
+    <mat-slider discrete showTickMarks min="0" max="5" style="width:100%">
+      <input matSliderThumb [value]="dayForm.controls['amountOfVisitors'].value"
+             (input)="updateAmountOfVisitors($any($event.target).value)">
+    </mat-slider>
     <mat-grid-list cols="4" rowHeight="50px">
       <mat-grid-tile>
         <button mat-icon-button color="primary" (click)="increase('helpAnimals')">
@@ -117,12 +122,6 @@
             <mat-option *ngFor="let place of places" [value]="place">{{ place.name }}</mat-option>
           </mat-select>
         </mat-form-field>
-        <!--      <mat-form-field>-->
-        <!--        <mat-label>Besucher</mat-label>-->
-        <!--        <mat-slider discrete showTickMarks min="0" max="5">-->
-        <!--          <input matSliderThumb [formControl]="dayForm.controls['amountOfVisitors']">-->
-        <!--        </mat-slider>-->
-        <!--      </mat-form-field>-->
         <mat-form-field>
           <mat-label>Besucher</mat-label>
           <input matInput type="number" formControlName="amountOfVisitors">

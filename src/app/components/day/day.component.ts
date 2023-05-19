@@ -72,4 +72,27 @@ export class DayComponent implements OnInit {
     const current = this.dayForm.controls[attribute].value;
     this.dayForm.controls[attribute].setValue(current + 1);
   }
+
+  updateAmountOfVisitors(value: number) {
+    this.dayForm.controls['amountOfVisitors'].setValue(value);
+  }
+
+  visitorString(value: string) {
+    switch (value) {
+      case "0":
+        return 'Kein einziger Besucher';
+      case "1":
+        return 'Da war jemand am Strand';
+      case "2":
+        return 'Es gab Gruppenbildung';
+      case "3":
+        return 'Es war gut besucht';
+      case "4":
+        return 'Schöner Trubel';
+      case "5":
+        return 'Man musste Liegeplätze suchen';
+      default:
+        return 'Keine Angabe';
+    }
+  }
 }
