@@ -13,7 +13,7 @@
   </mat-card-header>
   <mat-card-content class="dashboard-card-content" *ngIf="(summary | async) as summaryData">
     <p>Erstellt am: {{ summaryData?.created }}</p>
-    <p>Tag: {{ summaryData?.day?.start }}</p>
+    <p>Tag: {{ summaryData?.day?.date }}</p>
     <p>Personen: {{ getPersonList(summaryData?.persons) }}</p>
     <p>Ort: {{ summaryData?.place?.name }}</p>
     <p>Anwesenheiten: {{ summaryData?.presences?.length }}</p>

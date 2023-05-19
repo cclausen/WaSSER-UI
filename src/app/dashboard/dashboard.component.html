@@ -2,9 +2,10 @@
   <h1 class="mat-h1">Dashboard</h1>
   <mat-grid-list cols="2" rowHeight="350px">
     <ng-container *ngFor="let card of cards | async">
-      <mat-grid-tile *ngIf="card.title !== 'Aktive Personen' && card.title !== 'Tages-Übersicht'"
-                     [colspan]="card.cols"
-                     [rowspan]="card.rows"
+      <mat-grid-tile
+        *ngIf="card.title !== 'Aktive Personen' && card.title !== 'Tages-Übersicht' && card.title !== 'Tag'"
+        [colspan]="card.cols"
+        [rowspan]="card.rows"
       >
         <mat-card appearance="outlined" class="dashboard-card">
           <mat-card-header>
@@ -29,11 +30,20 @@
           </mat-card-content>
         </mat-card>
       </mat-grid-tile>
-      <mat-grid-tile *ngIf="card.title === 'Aktive Personen'">
+      <mat-grid-tile *ngIf="card.title === 'Aktive Personen'"
+                     [colspan]="card.cols"
+                     [rowspan]="card.rows">
         <app-active-persons/>
       </mat-grid-tile>
-      <mat-grid-tile *ngIf="card.title === 'Tages-Übersicht'">
+      <mat-grid-tile *ngIf="card.title === 'Tages-Übersicht'"
+                     [colspan]="card.cols"
+                     [rowspan]="card.rows">
         <app-day-overview/>
+      </mat-grid-tile>
+      <mat-grid-tile *ngIf="card.title === 'Tag'"
+                     [colspan]="card.cols"
+                     [rowspan]="card.rows">
+        <app-day/>
       </mat-grid-tile>
     </ng-container>
   </mat-grid-list>

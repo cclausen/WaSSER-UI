@@ -27,7 +27,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {MAT_DATE_FORMATS, MatDateFormats, MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -39,6 +39,8 @@ import 'moment/locale/de';
 import {DayOverviewComponent} from './components/day-overview/day-overview.component';
 import {PlacesComponent} from "./places/places.component";
 import {PlaceComponent} from "./places/place/place.component";
+import {DayComponent} from './components/day/day.component';
+import {MatSliderModule} from "@angular/material/slider";
 
 const MY_DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -64,6 +66,7 @@ const MY_DATE_FORMATS: MatDateFormats = {
     PersonComponent,
     ActivePersonsComponent,
     DayOverviewComponent,
+    DayComponent,
   ],
   imports: [
     BrowserModule,
@@ -95,7 +98,9 @@ const MY_DATE_FORMATS: MatDateFormats = {
     MatInputModule,
     MatDatepickerModule,
     MatDialogModule,
-    MomentModule
+    MomentModule,
+    MatSliderModule,
+    FormsModule
   ],
   providers: [
     provideProtractorTestingSupport(),

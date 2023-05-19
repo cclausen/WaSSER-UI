@@ -15,8 +15,7 @@ import { Place } from './place';
 export interface Day { 
     id?: number;
     place?: Place;
-    start?: string;
-    end?: string;
+    date?: string;
     amountOfVisitors?: number;
     firstResponder?: number;
     reanimations?: number;

@@ -16,8 +16,7 @@ export class DayOverviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.summaryApi.summary().subscribe((data: Summary) => {
-      console.log(data); // Check the data received from the API
-      this.summary = of(data); // Assign the data to the summary variable
+      this.summary = of(data);
     });
   }
 

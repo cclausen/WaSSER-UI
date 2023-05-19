@@ -18,16 +18,14 @@ export class DashboardComponent {
         return [
           {title: 'Aktive Personen', cols: 1, rows: 1},
           {title: 'Tages-Übersicht', cols: 1, rows: 1},
-          {title: 'Card 2', cols: 1, rows: 1},
-          {title: 'Card 3', cols: 1, rows: 1},
+          {title: 'Tag', cols: 2, rows: 2},
         ];
       }
 
       return [
         {title: 'Aktive Personen', cols: 1, rows: 1},
         {title: 'Tages-Übersicht', cols: 1, rows: 1},
-        {title: 'Card 2', cols: 2, rows: 1},
-        {title: 'Card 3', cols: 1, rows: 2},
+        {title: 'Tag', cols: 2, rows: 2},
       ];
     })
   );
