@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Person, Summary, SummaryControllerService} from "../../../api";
 import {Observable, of} from "rxjs";
 
@@ -9,6 +9,7 @@ import {Observable, of} from "rxjs";
 })
 export class DutyOverviewComponent implements OnInit {
   summary: Observable<Summary>;
+  @Input() asDashboardCard: boolean = true;
 
   constructor(private summaryApi: SummaryControllerService) {
     this.summary = this.summaryApi.summary();

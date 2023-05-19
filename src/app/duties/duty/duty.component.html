@@ -1,6 +1,6 @@
-<mat-card appearance="outlined" class="dashboard-card">
+<mat-card appearance="outlined" [class]="{'dashboard-card': !dutyId}">
   <mat-card-header>
-    <mat-card-title>Dienst-Einsätze</mat-card-title>
+    <mat-card-title>Dienst-Übersicht</mat-card-title>
   </mat-card-header>
   <mat-card-content class="dashboard-card-content">
     <h3>{{visitorString(dutyForm.controls['amountOfVisitors'].value)}}</h3>
@@ -117,6 +117,13 @@
     <form [formGroup]="dutyForm">
       <div [hidden]="!expand">
         <mat-form-field>
+          <mat-label>Datum</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="Dienst-Tag" formControlName="date"
+                 [value]="convertToDate(dutyForm.get('lifeguardFrom')?.value)">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
           <mat-label>Ort</mat-label>
           <mat-select formControlName="place" [compareWith]="comparePlaces">
             <mat-option *ngFor="let place of places" [value]="place">{{ place.name }}</mat-option>
@@ -180,9 +187,10 @@
         </mat-form-field>
 
       </div>
-      <button mat-raised-button color="primary" [disabled]="!dutyForm.valid" (click)="saveDuty()">Save</button>
+      <button mat-raised-button color="primary" [disabled]="!dutyForm.valid" [class.flashing-button]="dutyForm.dirty"
+              (click)="saveDuty()">Save
+      </button>
     </form>
-
-
   </mat-card-content>
 </mat-card>
+<app-duty-overview *ngIf="dutyId" [asDashboardCard]="!dutyId"/>

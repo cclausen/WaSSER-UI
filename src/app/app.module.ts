@@ -39,8 +39,9 @@ import 'moment/locale/de';
 import {DutyOverviewComponent} from './components/duty-overview/duty-overview.component';
 import {PlacesComponent} from "./places/places.component";
 import {PlaceComponent} from "./places/place/place.component";
-import {DutyComponent} from './components/duty/duty.component';
 import {MatSliderModule} from "@angular/material/slider";
+import {DutiesComponent} from './duties/duties.component';
+import {DutyComponent} from "./duties/duty/duty.component";
 
 const MY_DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -67,6 +68,7 @@ const MY_DATE_FORMATS: MatDateFormats = {
     ActivePersonsComponent,
     DutyOverviewComponent,
     DutyComponent,
+    DutiesComponent,
   ],
   imports: [
     BrowserModule,

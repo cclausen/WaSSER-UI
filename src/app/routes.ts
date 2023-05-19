@@ -5,6 +5,8 @@ import {PresencesComponent} from './presences/presences.component';
 import {PersonComponent} from './persons/person/person.component';
 import {PlaceComponent} from "./places/place/place.component";
 import {PlacesComponent} from "./places/places.component";
+import {DutiesComponent} from "./duties/duties.component";
+import {DutyComponent} from "./duties/duty/duty.component";
 
 const routeConfig: Routes = [
   // Dashboard
@@ -50,6 +52,23 @@ const routeConfig: Routes = [
     path: 'places/new',
     component: PlaceComponent,
     title: 'Place',
+  },
+
+  // Duties
+  {
+    path: 'duties',
+    component: DutiesComponent,
+    title: 'Duty',
+  },
+  {
+    path: 'duties/:id',
+    component: DutyComponent,
+    title: 'Duty',
+  },
+  {
+    path: 'duties/new',
+    component: DutyComponent,
+    title: 'Duty',
   },
 
   // Presences

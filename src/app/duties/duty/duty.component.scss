@@ -1,0 +1,15 @@
+@keyframes flash {
+  0% {
+    background-color: #673ab7; /* Start with a primary background */
+  }
+  50% {
+    background-color: #ffd740; /* Flash with a accent background */
+  }
+  100% {
+    background-color: #673ab7; /* Return to a primary background */
+  }
+}
+
+.flashing-button {
+  animation: flash 1s infinite; /* Apply the animation with a 1-second duration */
+}

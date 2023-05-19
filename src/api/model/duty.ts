@@ -15,7 +15,7 @@ import { Place } from './place';
 export interface Duty { 
     id?: number;
     place?: Place;
-    date?: string;
+    date: string;
     amountOfVisitors?: number;
     firstResponder?: number;
     reanimations?: number;

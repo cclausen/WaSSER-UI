@@ -39,7 +39,7 @@ export class PlacesComponent implements AfterViewInit, OnInit {
 
   removePlace(id: number) {
     this.placeApi.deletePlace(id).subscribe(() => {
-      this.snackBar.open('Person removed successfully!', 'Close', {
+      this.snackBar.open('Ort erfolgreich gelöscht!', 'Close', {
         duration: 3000,
       });
       this.dataSource.index();

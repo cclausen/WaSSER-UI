@@ -1,10 +1,10 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatTable } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { Person, PersonControllerService } from '../../api';
-import { PersonsDataSource } from './persons-datasource';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {MatTable} from '@angular/material/table';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {Person, PersonControllerService} from '../../api';
+import {PersonsDataSource} from './persons-datasource';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-persons',
@@ -39,7 +39,7 @@ export class PersonsComponent implements AfterViewInit, OnInit {
 
   removePerson(id: number) {
     this.personApi.deletePerson(id).subscribe(() => {
-      this.snackBar.open('Person removed successfully!', 'Close', {
+      this.snackBar.open('Person erfolgreich gelöscht!', 'Close', {
         duration: 3000,
       });
       this.dataSource.index();

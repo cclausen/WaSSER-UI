@@ -1,6 +1,6 @@
-<mat-card appearance="outlined" class="dashboard-card">
+<mat-card appearance="outlined" [class]="{'dashboard-card': asDashboardCard}">
   <mat-card-header>
-    <mat-card-title>Dienst-Übersicht</mat-card-title>
+    <mat-card-title>Dienst-Zusammenfassung</mat-card-title>
     <button mat-icon-button class="refresh-button" (click)="refreshSummary()">
       <mat-icon>refresh</mat-icon>
     </button>
